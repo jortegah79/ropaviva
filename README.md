@@ -25,3 +25,66 @@ Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To u
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+
+
+
+recordar que en la configuracion de Angular.json debe haber esto."styles": [              
+              "node_modules/bootstrap-icons/font/bootstrap-icons.css",
+              "src/styles.scss"
+            ],
+            "stylePreprocessorOptions": {
+            "includePaths": [
+              "node_modules"
+            ]
+          },
+            "scripts": [
+              "node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"
+            ]
+
+Para poder "jugar" con los colores de bootstrap hay que hacer esto en el archivo styles.scss
+
+// Importar funciones de Bootstrap
+@import "bootstrap/scss/functions";
+@import "bootstrap/scss/variables";
+// Definir los colores personalizados
+$custom-colors:(
+  "cyan":    #9cdbff,
+  "teal":    #20c997,
+  "green":   #28a745,
+  "yellow":  #ffc107,
+  "pink":    #e83e8c,
+  "red":     #dc3545,
+  "orange":  #fd7e14,
+  "purple":  #6f42c1,
+  "indigo":  #6610f2,
+  "blue":    #007bff
+);
+$theme-colors:map-merge($theme-colors,$custom-colors);
+
+// Importar el resto de Bootstrap
+@import "bootstrap/scss/bootstrap";
+
+Hay que tener la devdependencia 
+
+// Importar funciones de Bootstrap
+@import "bootstrap/scss/functions";
+@import "bootstrap/scss/variables";
+// Definir los colores personalizados
+$custom-colors:(
+  "cyan":    #9cdbff,
+  "teal":    #20c997,
+  "green":   #28a745,
+  "yellow":  #ffc107,
+  "pink":    #e83e8c,
+  "red":     #dc3545,
+  "orange":  #fd7e14,
+  "purple":  #6f42c1,
+  "indigo":  #6610f2,
+  "blue":    #007bff
+);
+$theme-colors:map-merge($theme-colors,$custom-colors);
+
+// Importar el resto de Bootstrap
+@import "bootstrap/scss/bootstrap";
+
+y las dependencias de boostrap

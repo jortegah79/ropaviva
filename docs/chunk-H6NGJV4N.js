@@ -1,0 +1,1 @@
+import{Pa as o,Qa as a,Va as i,W as r,Ya as p}from"./chunk-4Q5WTUPO.js";var d=(()=>{let e=class e{};e.\u0275fac=function(n){return new(n||e)},e.\u0275cmp=r({type:e,selectors:[["app-errorpage"]],standalone:!0,features:[p],decls:2,vars:0,template:function(n,c){n&1&&(o(0,"p"),i(1,"errorpage works!"),a())}});let t=e;return t})();export{d as ErrorpageComponent};

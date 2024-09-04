@@ -1,0 +1,27 @@
+<div class="d-block d-lg-none logo-movil">
+    <img class="w-100" src="assets/logo/logo_ropavivaa.png">
+</div>
+
+<!-- El logo -->
+<img class="d-none d-lg-block logo-imagen" src="assets/logotipo.png">
+
+<!-- carrusel de imagenes -->
+<div class="d-none d-lg-block inicio">
+    <app-carrusel></app-carrusel>
+</div>
+
+<!-- categorias -->
+<div class="container-fluid  ">
+    <section class="container mb-5">
+        <header>
+            <h3 class=" my-3 text-primary">Nuestras categorías</h3>
+        </header>
+        <article class="row ">
+            @for (category of categories(); track $index) {
+            <div class="col-6 col-md-4 col-lg-3">
+                <store-categoria (emitCategory)="toCategory($event)" [category]="category" />
+            </div>
+            }
+        </article>
+    </section>
+</div>

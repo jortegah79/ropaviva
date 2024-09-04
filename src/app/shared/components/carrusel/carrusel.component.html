@@ -1,0 +1,17 @@
+<div id="carrusel" class="carousel slide carousel-fade border border-2 border-dark " data-bs-ride="carousel">
+
+    <div class="carousel-inner">
+        @for (image of images(); track $index) {
+        <div class="carousel-item active" data-bs-interval="15000">
+           <!-- <div class="image1"></div>         -->
+            <img class="image1"[srcset]="image">
+        </div>
+    }
+        <!-- <div class="carousel-item" data-bs-interval="15000">
+            <div class="image2"></div>
+        </div>
+        <div class="carousel-item" data-bs-interval="15000">
+            <div class="image3"></div>           
+        </div> -->
+    </div>
+</div>

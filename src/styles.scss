@@ -1,1 +1,20 @@
-/* You can add global styles to this file, and also import other style files */
+// Importar funciones de Bootstrap
+@import "bootstrap/scss/functions";
+@import "bootstrap/scss/variables";
+// Definir los colores personalizados
+$custom-colors:(
+  "cyan":    #9cdbff,
+  "teal":    #20c997,
+  "green":   #28a745,
+  "yellow":  #ffc107,
+  "pink":    #e83e8c,
+  "red":     #dc3545,
+  "orange":  #fd7e14,
+  "purple":  #6f42c1,
+  "indigo":  #6610f2,
+  "blue":    #007bff
+);
+$theme-colors:map-merge($theme-colors,$custom-colors);
+
+// Importar el resto de Bootstrap
+@import "bootstrap/scss/bootstrap";

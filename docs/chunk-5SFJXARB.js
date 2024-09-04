@@ -1,0 +1,1 @@
+import{Pa as r,Qa as i,Va as a,W as n,Ya as p}from"./chunk-4Q5WTUPO.js";var m=(()=>{let e=class e{};e.\u0275fac=function(o){return new(o||e)},e.\u0275cmp=n({type:e,selectors:[["app-producto"]],standalone:!0,features:[p],decls:2,vars:0,template:function(o,c){o&1&&(r(0,"p"),a(1,"producto works!"),i())}});let t=e;return t})();export{m as ProductoComponent};
