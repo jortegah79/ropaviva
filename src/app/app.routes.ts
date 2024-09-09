@@ -1,5 +1,6 @@
 import { Routes } from '@angular/router';
 import { TemplateComponent } from './store/pages/template/template.component';
+import { TemplateComponent as TemplateComponent2 } from './dashboard/pages/template/template.component';
 
 export const routes: Routes = [
     {
@@ -29,6 +30,37 @@ export const routes: Routes = [
                 redirectTo: "inicio"
             }
 
+        ]
+    },
+    {
+        path:"dashboard",
+        component:TemplateComponent2,
+        children:[
+            {
+                path: "categorias",
+                loadComponent: () => import("./dashboard/pages/categorias/categorias.component")
+            },
+            {
+                path: "productos",
+                loadComponent: () => import("./dashboard/pages/productos/productos.component")
+            },
+            {
+                path: "producto/:id",
+                loadComponent: () => import("./dashboard/pages/producto/producto.component")
+            },
+            {
+                path: "cart",
+                loadComponent: () => import("./dashboard/pages/carrito/carrito.component")
+            },
+            {
+                path: "usuarios",
+                loadComponent: () => import("./dashboard/pages/usuarios/usuarios.component")
+            },
+            {
+                path: "",
+                pathMatch: "full",
+                redirectTo: "categorias"
+            }
         ]
     },
     {

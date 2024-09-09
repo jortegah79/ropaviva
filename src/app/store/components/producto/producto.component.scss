@@ -1,0 +1,27 @@
+.card {
+  width: 20vw;
+  transition: all 0.75s ease;
+
+  .product {
+    width: 100%;
+    height: 20vw;
+
+
+    img {
+      width: 100%;
+      height: 100%;
+    }
+
+  }
+
+  .card-body {
+    width: 100%;
+  }
+
+  
+}
+.card:hover {
+    border: .25px solid black;
+    box-shadow: 0px 0px 3px 1px #55a, -2px -2px 3px 1px #99A, 3px 3px 5px 2px #BBF;
+    background-size: 115%;
+  }

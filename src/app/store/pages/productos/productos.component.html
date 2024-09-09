@@ -1,35 +1,20 @@
 <div class="container">
-    @if(categoria!==undefined){
-    <h1 class="text-danger display-3 "><img class="img-thumbnail me-3 border-3 border-teal"
-            style="border-radius:100%;width:100px;" [srcset]="categoria()?.image">{{categoria()?.name}}</h1>
+  <!-- @if(categoria!==undefined){ -->
+  <!-- <h1 class="text-danger display-3 "><img class="img-thumbnail me-3 border-3 border-teal" -->
+      <!-- style="border-radius:100%;width:100px;" [srcset]="categoria()?.image">{{categoria()?.name}}</h1> -->
 
-    }@else {
-    <p>espere...</p>
-    }
+  <!-- }@else { -->
+  <p>espere...</p>
+  <!-- } -->
 
 
-    <div class="row">
-        @for (producto of productos(); track $index) {
-      
-        <div class="col-12 col-md-3 col-lg-4 gap-1 mb-4">
-            <div class="card min-vh-25 ">
-              @if(producto.title!=='otro' && producto.title!=='otroooo' && producto.title !=='Laptop' && producto.title !=='gdsgds'){
-              <img [srcset]="producto.images[0]" class="card-image-top" />
-              }@else {
-                <img srcset="https://img.freepik.com/vector-premium/vector-icono-imagen-predeterminado-pagina-imagen-faltante-diseno-sitio-web-o-aplicacion-movil-no-hay-foto-disponible_87543-11093.jpg?w=996" class="card-image-top" />
-              }
-                <div class="card-body">
-                    <h5 claass="card-title">{{producto.title}}</h5>
-                    <p class="card-text">{{producto.price}} €</p>
-                </div>
-            </div>
-        </div>
-       
-
-        <!-- <pre class="text-danger">{{ producto | json }}</pre>  -->
-
-        }@empty {
-        <h3>No hay nada</h3>
-        }
-
+  <div class="row">
+    <!-- @for (producto of productos(); track $index) { -->
+    <div class="col-12 col-md-3 col-lg-4 gap-1 mb-4">
+      <!-- <component-producto [producto]="producto"/> -->
     </div>
+    <!-- }@empty { -->
+    <h3>No hay nada</h3>
+    <!-- } -->
+
+  </div>

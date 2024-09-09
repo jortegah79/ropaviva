@@ -1,6 +1,7 @@
 // Importar funciones de Bootstrap
 @import "bootstrap/scss/functions";
 @import "bootstrap/scss/variables";
+
 // Definir los colores personalizados
 $custom-colors:(
   "cyan":    #9cdbff,
@@ -16,5 +17,6 @@ $custom-colors:(
 );
 $theme-colors:map-merge($theme-colors,$custom-colors);
 
+$enable-shadows:true;
 // Importar el resto de Bootstrap
 @import "bootstrap/scss/bootstrap";

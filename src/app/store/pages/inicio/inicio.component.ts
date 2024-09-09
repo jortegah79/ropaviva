@@ -1,10 +1,10 @@
 import { CommonModule } from '@angular/common';
-import { Component, computed, inject, OnInit } from '@angular/core';
-import { toSignal } from '@angular/core/rxjs-interop';
-import { CarruselComponent } from "../../../shared/components/carrusel/carrusel.component";
-import { CategoriesService } from '../../service/categories.service';
+import { Component,  inject } from '@angular/core';
+import { CarruselComponent } from "../../components/carrusel/carrusel.component";
+import { CategoriesService } from '../../../service/categories.service';
 import { Router } from '@angular/router';
 import { CategoriaComponent } from '../../components/categoria/categoria.component';
+import { CategoryStore } from '../../../states/categories.store';
 
 
 @Component({
@@ -18,18 +18,16 @@ export class InicioComponent {
   
   private categoriesService = inject(CategoriesService);
   private router=inject(Router);
-
-  private allCategories = toSignal(this.categoriesService.getCategories());
-
-  public categories = computed(() => {  
-    if (!this.allCategories()) return undefined;
-    return this.allCategories()?.filter(category => category.image !== "https://placeimg.com/640/480/any");
-  });
-  
+  readonly store=inject(CategoryStore);
+ 
   toCategory(categoria:number) {
 
     this.router.navigateByUrl(`store/productos/${categoria}`);
 
+  }
+  constructor(){
+    this.store.loadCategories();
+   
   }
 }
   

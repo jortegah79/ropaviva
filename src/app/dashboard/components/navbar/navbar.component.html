@@ -1,0 +1,23 @@
+<nav class="navbar navbar-expand-lg bg-black border-3 border-bottom border-red ">
+  <div class="container-fluid text-center ">
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
+      aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse text-start z-2" id="navbarNavDropdown">
+      <ul class="navbar-nav  d-block d-md-none  bg-red rounded-3 p-2">
+        @for (item of menuRutas(); track $index) {
+        @if(item.name){
+        <li class="nav-item ">
+          <a class="nav-link active fs-3 ms-2" aria-current="page" [routerLink]="item.path" routerLinkActive="true"><i
+              class="{{item.icon}} me-3"></i>{{item.name}}</a>
+        </li>
+        }
+        }
+
+      </ul>
+    </div>
+
+  </div>
+  <a class="navbar-brand text-red  fw-bold fs-2 position-absolute start-50 translate-middle-x">ROPAVIVA</a>
+</nav>

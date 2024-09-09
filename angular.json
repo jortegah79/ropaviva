@@ -36,15 +36,15 @@
                 "input": "public"
               }
             ],
-            "styles": [              
+            "styles": [
               "node_modules/bootstrap-icons/font/bootstrap-icons.css",
               "src/styles.scss"
             ],
             "stylePreprocessorOptions": {
-            "includePaths": [
-              "node_modules"
-            ]
-          },
+              "includePaths": [
+                "node_modules"
+              ]
+            },
             "scripts": [
               "node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"
             ]

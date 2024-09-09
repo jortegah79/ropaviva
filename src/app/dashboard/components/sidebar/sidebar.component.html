@@ -1,0 +1,13 @@
+<ul class="list-group bg-black  border-2 border-end border-black rounded-0">
+    <li class="bg-red p-3 fs-3 fw-bolder text-light border-2 border-bottom border-red text-center">MENÚ</li>
+    
+    @for (ruta of menuRutas(); track $index) {
+    @if(ruta.name){
+    <li class="list-group-item fs-5 mb-1 activo"[routerLink]="ruta.path" routerLinkActive="active">
+       <i class="{{ruta.icon}} me-2"></i> {{ruta.name}}
+    </li>
+    }
+
+    }
+
+</ul>

@@ -1,6 +1,6 @@
-import { Component, EventEmitter, input, output, Output } from '@angular/core';
-import { Category } from '../../models/categoryResponse.model';
+import { Component,  input, output } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import Category from '../../../models/category';
 
 @Component({
   selector: 'store-categoria',
@@ -8,7 +8,7 @@ import { CommonModule } from '@angular/common';
   imports: [CommonModule],
   template: `
    <div class=" text-center my-2"  style="cursor: pointer;" (click)="toCategory(category() !.id)">
-      <div [ngStyle]="{'background-image': 'url(' + category()!.image + ')'}" class=" rounded-3 category mb-3" ></div>
+      <div [ngStyle]="{'background-image': 'url(' + category()!.imagenUrl + ')'}" class=" rounded-3 category mb-3" ></div>
       <h5 class="card-title fs-4 fw-bold text-indigo">{{category()!.name}}</h5>
    </div>`,
   styles: `
@@ -29,10 +29,10 @@ import { CommonModule } from '@angular/common';
 export class CategoriaComponent {
 
   public category = input<Category>();
-  public emitCategory = output<number>();
+  public emitCategory = output<any>();
 
 
-  toCategory(id: number) {
+  toCategory(id: any) {
 
     this.emitCategory.emit(id);
   }

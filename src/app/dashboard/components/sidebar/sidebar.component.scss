@@ -1,0 +1,10 @@
+ul{
+    height: 100%;
+    li.activo:hover{
+        
+        background:blue;
+        color:white;
+        transition: all .5s ease;
+        cursor: pointer;
+    }
+}

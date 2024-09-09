@@ -1,0 +1,71 @@
+<div class="row p-1 p-lg-5 ">
+    <div class="col-12 mb-2">
+        <app-title title="Categorias" />
+        <button data-bs-toggle="modal" data-bs-target="#NewCategory" class="btn btn-primary fs-5 " >Nueva Categoria</button>
+    </div>
+
+    <section class="col-12 ">
+        <article class="card  rounded-3 mt-5 Z-1">
+
+            <div class="p-5 card-body table-responsive shadow-lg">
+                <table class="table table-bordered table-secondary w-100 text-center ">
+                    <thead>
+                        <tr class="row ">
+                            <th class="col-3 bg-indigo text-light">Nombre</th>
+                            <th class="col-4 bg-indigo text-light">Imagen-url</th>
+                            <th class="col-2 bg-indigo text-light">Imagen</th>
+                            <th class="col-1 bg-indigo text-light">status</th>
+                            <th class="col-1 bg-indigo text-light">Edit</th>
+                            <th class="col-1 bg-indigo text-light">Delete</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @for (category of store.categories(); track $index) {
+                        @if (!category.isDeleted) {
+                        <tr class="row ">
+                            <th class="col-3 fs-3 text-capitalize">{{category.name}}</th>
+                            <th class="col-4 fs-4"><a href="{{category.imagenUrl}}" target="_blank">Imagen Externa</a></th>
+                            <th class="col-2"> <div [ngStyle]="{'background-image':'url('+ category.imagenUrl +')'}" class="img mx-auto"></div>
+                              <!-- <img [srcset]="category.imagenUrl" alt="no-foto" /> -->
+                            </th>
+                            <th class="col-1 text-white fs-4"
+                                [ngClass]="{'bg-success': category.status,'bg-danger':!category.status}"
+                                style="cursor: pointer;">{{ category.status?"Activa":"Desabilitada"}}</th>
+                            <th class="col-1 bg-warning text-black fs-4"><i class="bi bi-pencil-square"></i></th>
+                            <th class="col-1 bg-danger text-white fs-4" (click)="deleteCategory(category)"><i class="bi bi-trash3"></i></th>
+                        </tr>
+                        }
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </article>
+
+    </section>
+</div>
+<div class="modal fade" id="NewCategory" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalLabel">Nueva Categoria</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+         <form  [formGroup]="categoryForm">
+            <div class="mb-3">
+                <label for="nameInput1" class="form-label">Nombre</label>
+                <input type="text" class="form-control" id="nameInput1" placeholder="Nombre de categoria" formControlName="name">
+              </div>
+              <div class="mb-3">
+                <label for="nameInput2" class="form-label">Url de imagen</label>
+                <input type="url" class="form-control" id="nameInput2" rows="3" formControlName="imagenUrl"/>
+              </div>
+         </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" #button>Cerrar</button>
+          <button type="button" class="btn btn-primary" (click)="saveCategory(button)">Guardar</button>
+        </div>
+      </div>
+    </div>
+  </div>
