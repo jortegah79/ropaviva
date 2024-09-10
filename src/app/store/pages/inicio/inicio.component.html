@@ -16,12 +16,14 @@
         <header>
             <h3 class=" my-3 text-primary">Nuestras categorías</h3>
         </header>
-         <article class="row ">
+        <article class="row ">
             @for (category of store.categories(); track $index) {
-            <div class="col-6 col-md-4 col-lg-3">                
+            @if (category.status) {
+            <div class="col-6 col-md-4 col-lg-3">
                 <store-categoria (emitCategory)="toCategory($event)" [category]="category" />
             </div>
             }
-        </article> 
+            }
+        </article>
     </section>
 </div>

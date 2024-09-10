@@ -3,22 +3,16 @@ import { initializeApp } from "firebase/app";
 import { getFirestore, Firestore, addDoc, collection, getDocs, doc, updateDoc, deleteDoc, QueryDocumentSnapshot, DocumentData } from "firebase/firestore";
 import Category from '../models/category';
 import { conversion } from './conversionOptions.enum';
+import { environment } from '../../environments/environment.development';
 
 @Injectable({
   providedIn: 'root'
 })
 export class FirebaseService {
 
-  private firebaseConfig = {
-    apiKey: "AIzaSyAUTS453QQ_SfFAR6p7J-1Ar_Kn33lT1fQ",
-    authDomain: "randomstore-1c5af.firebaseapp.com",
-    projectId: "randomstore-1c5af",
-    storageBucket: "randomstore-1c5af.appspot.com",
-    messagingSenderId: "62175630618",
-    appId: "1:62175630618:web:f29fb097a0276cf051c8a3",
-    measurementId: "G-P455CQ9C1V"
-  };
+  private firebaseConfig = environment.firebaseConfig;
   private db: Firestore;
+
   constructor() {
     const app = initializeApp(this.firebaseConfig);
     this.db = getFirestore(app);

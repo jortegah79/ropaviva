@@ -22,6 +22,16 @@ export class CategoriesService {
   newCategory(category: Category) {
     this.firebase.createData('categories', category);    
   }
+  editCategory(category: Category) {
+    const id=category.id;
+    const categoriaObj={
+      name:category.name,
+      imagenUrl:category.imagenUrl,
+      status:category.status,
+      isDeleted:category.isDeleted
+    }
+    this.firebase.updateData('categories',id!,categoriaObj) ;    
+  }
   deleteCategory(category: Category) {
     if (!category.id) return;
       this.firebase.deleteData('categories', category.id)        
