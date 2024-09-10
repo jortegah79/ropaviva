@@ -1,0 +1,1 @@
+import{$a as a,ab as i,ba as o,mb as r,qb as s}from"./chunk-BZGWWIDY.js";import"./chunk-KB6NIWCL.js";var d=(()=>{let e=class e{};e.\u0275fac=function(n){return new(n||e)},e.\u0275cmp=o({type:e,selectors:[["app-usuarios"]],standalone:!0,features:[s],decls:2,vars:0,template:function(n,u){n&1&&(a(0,"p"),r(1,"usuarios works!"),i())}});let t=e;return t})();export{d as default};
