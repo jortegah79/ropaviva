@@ -41,6 +41,9 @@ export const CategoryStore = signalStore(
         patchState(store, { pagePagination: store.pagePagination() - 1 })
       }
     },
+    async resetPagePaginator():Promise<void>{
+      patchState(store,{pagePagination:0})
+    }
 
   }))
 )

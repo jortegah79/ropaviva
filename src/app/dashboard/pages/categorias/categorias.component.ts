@@ -29,6 +29,7 @@ export default class CategoriasComponent implements OnInit {
 
   ngOnInit(): void {
     this.store.loadCategories();
+    this.store.resetPagePaginator();
   }
 
   saveCategory(button: HTMLButtonElement) {
