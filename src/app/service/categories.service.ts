@@ -1,8 +1,6 @@
-import { computed, inject, Injectable, signal } from '@angular/core';
+import {  inject, Injectable } from '@angular/core';
 import { FirebaseService } from './firebase.service';
 import Category from '../models/category';
-import { collection, Firestore, getDocs } from 'firebase/firestore';
-import { from } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -12,13 +10,15 @@ export class CategoriesService {
   private firebase = inject(FirebaseService);
 
   async getCategorias() {
-    const categorias: Category[] = await this.firebase.getData('categories');
+    const categorias: Category[] = await this.firebase.getData('categories') as Category[];
     return categorias;
   }
-
-  getCategory(id: number) {
-
+  async getCategoryById(id:string){
+    const categorias=this.getCategorias();
+    const categoria= (await categorias).filter(categoria=> categoria.id===id);
+    return categoria[0];
   }
+
   newCategory(category: Category) {
     this.firebase.createData('categories', category);    
   }

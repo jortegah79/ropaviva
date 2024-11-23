@@ -1,30 +1,29 @@
 <div class="row p-1 p-lg-5 ">
   <div class="col-12 mb-2">
     <app-title title="Categorias ({{store.categoriesCount()}})" />
-    <button data-bs-toggle="modal" data-bs-target="#NewCategory" class="btn btn-primary fs-5 ">Nueva Categoría</button>
+    <button data-bs-toggle="modal" data-bs-target="#NewCategory" class="btn btn-primary fs-5" (click)="resetFormulario()">Nueva Categoría</button>
   </div>
 
-  <section class="col-12 ">
+  <section class="col-12 col-lg-10 ">
     <article class="card  rounded-3 mt-1 z-1">
-      <div class="p-3 px-5 card-body table-responsive shadow-lg">
-        <nav aria-label="Page navigation example">
-          <ul class="pagination justify-content-end">
+      <div class="p-3  card-body table-responsive shadow-lg">
+        <nav aria-label="Page navigation example ">
+          <ul class="pagination justify-content-end   w-lg-75 mx-auto">
             <li class="page-item btn btn-outline-primary" (click)="store.previousPagePaginator()">
-             Previous
+              Previous
             </li>
-           
+
             <li class="page-item btn btn-outline-primary ms-2" (click)="store.nextPagePaginator()">
               Next
             </li>
           </ul>
         </nav>
-        <table class="table table-bordered border-secondary table-striped w-100 text-center  ">
+        <table class="table table-bordered border-secondary table-striped w-lg-75  text-center mx-auto ">
           <thead>
             <tr class="row ">
-              <th class="col-2 bg-indigo text-light">Id</th>
               <th class="col-3 bg-indigo text-light">Nombre</th>
-              <th class="col-2 bg-indigo text-light">Imagen-url</th>
-              <th class="col-2 bg-indigo text-light">Imagen</th>
+              <th class="col-3 bg-indigo text-light">Imagen-url</th>
+              <th class="col-3 bg-indigo text-light">Imagen</th>
               <th class="col-1 bg-indigo text-light">status</th>
               <th class="col-1 bg-indigo text-light">Edit</th>
               <th class="col-1 bg-indigo text-light">Delete</th>
@@ -33,26 +32,30 @@
           <tbody>
             @for (category of store.categories(); track $index) {
 
-              @if ( ($index >= store.pagePagination() *4) && ($index <(store.pagePagination() + 1 )*4)   ) {
-            <tr class="row ">
-              <td class="col-2 d-flex align-items-center justify-content-center">{{category.id}}</td>
-              <td class=" col-3 fs-3 d-flex align-items-center justify-content-center"><span class="">{{category.name}}</span></td>
-              <td class=" col-2 d-flex align-items-center justify-content-center fs-4 "><a href="{{category.imagenUrl}}" target="_blank">Imagen Externa</a></td>
+            @if ( ($index >= store.pagePagination() *4) && ($index <(store.pagePagination() + 1 )*4) ) { <tr
+              class="row ">
 
-              <td class=" col-2 "> <div [ngStyle]="{'background-image':'url('+ category.imagenUrl +')'}" class="img  "> </div>
-                
+              <td class=" col-3 fs-3 d-flex align-items-center justify-content-center"><span
+                  class="">{{category.name}}</span></td>
+              <td class=" col-3 d-flex align-items-center justify-content-center fs-4 "><a href="{{category.imagenUrl}}"
+                  target="_blank">Imagen Externa</a></td>
+
+              <td class=" col-3 ">
+                <div [ngStyle]="{'background-image':'url('+ category.imagenUrl +')'}" class="img  "> </div>
               </td>
-              <td class=" col-1 text-white d-flex align-items-center justify-content-center fs-5" (click)="changeStatus(category)"
+              <td class=" col-1 text-white d-flex align-items-center justify-content-center fs-5"
+                (click)="changeStatus(category)"
                 [ngClass]="{'bg-success': category.status,'bg-danger':!category.status}" style="cursor: pointer;">
                 {{ category.status?"Activa":"Deshabilitada"}}
               </td>
-              <td class=" col-1 bg-warning text-black fs-3 d-flex align-items-center justify-content-center" (click)="editCategory(category,NewCategory)"><i
+              <td class=" col-1 bg-warning text-black fs-3 d-flex align-items-center justify-content-center"
+                (click)="editCategory(category,NewCategory)" style="cursor: pointer;"><i
                   class="bi bi-pencil-square"></i></td>
-              <td class=" col-1 bg-danger text-white fs-3 d-flex align-items-center justify-content-center" (click)="deleteCategory(category)"><i
-                  class="bi bi-trash3"></i></td>
-            </tr>
-            }
-            }
+              <td class=" col-1 bg-danger text-white fs-3 d-flex align-items-center justify-content-center"
+                (click)="deleteCategory(category)" style="cursor: pointer;"><i class="bi bi-trash3"></i></td>
+              </tr>
+              }
+              }
           </tbody>
         </table>
       </div>

@@ -4,6 +4,7 @@ import { getFirestore, Firestore, addDoc, collection, getDocs, doc, updateDoc, d
 import Category from '../models/category';
 import { conversion } from './conversionOptions.enum';
 import { environment } from '../../environments/environment.development';
+import { Product } from '../models/product';
 
 @Injectable({
   providedIn: 'root'
@@ -21,7 +22,7 @@ export class FirebaseService {
   async getData(coleccion: string) {
     try {
       const itemSnapshot = await getDocs(collection(this.db, coleccion));
-      const items = itemSnapshot.docs.map(item => this.selectConversion(coleccion, item) as Category);
+      const items = itemSnapshot.docs.map(item => this.selectConversion(coleccion, item));
       return items ? items : [];
 
     } catch (error) {
@@ -40,20 +41,20 @@ export class FirebaseService {
     }
   }
 
-  async updateData(coleccion: string, categoriaId: string, objCollection: any) {
+  async updateData(coleccion: string, objId: string, objCollection: any) {
     try {
-      const docRef = doc(this.db, coleccion, categoriaId);
+      const docRef = doc(this.db, coleccion, objId);
       await updateDoc(docRef, objCollection);
       console.log(`${coleccion} actualizada con éxito`);
     } catch (error) {
-      console.error('Error al actualizar la categoría:', error);
+      console.error('Error al actualizar :', error);
       throw error;
     }
   }
 
-  async deleteData(coleccion: string, categoriaId: string) {
+  async deleteData(coleccion: string, objId: string) {
     try {
-      const docRef = doc(this.db, coleccion, categoriaId);
+      const docRef = doc(this.db, coleccion, objId);
       await deleteDoc(docRef);
       console.log(`${coleccion} eliminada con éxito`);
     } catch (error) {
@@ -63,13 +64,13 @@ export class FirebaseService {
   }
 
   private selectConversion(conv: string, data: QueryDocumentSnapshot<DocumentData, DocumentData>) {
+   
     switch (conv) {
       case conversion.Category:
-        const results = this.convertoToCategory(data);
-        return results;
+        return this.convertoToCategory(data);        
         break;
       case conversion.Product:
-        return [];
+        return this.convertoToProduct(data);        
         break;
       case conversion.User:
         return [];
@@ -93,5 +94,17 @@ export class FirebaseService {
     }  
     return categoria;
   }
-
+  private convertoToProduct(data: QueryDocumentSnapshot<DocumentData, DocumentData>): Product {   
+    const product: Product = {
+      id:         data.id,
+      name:       data.data()['name'],
+      description:data.data()['description'],
+      category:   data.data()['category'],
+      images:     data.data()['images'],
+      price:      data.data()['price'],
+      stock:      data.data()['stock'],      
+      status:     data.data()['status']
+    }  
+    return product;
+  }
 }

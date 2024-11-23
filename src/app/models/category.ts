@@ -1,7 +1,7 @@
 
 
 export default interface Category{
-    id?:string;
+    id:string;
     name:string;
     imagenUrl:string;
     status:boolean;

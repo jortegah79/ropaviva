@@ -20,8 +20,8 @@ export class InicioComponent {
   private router=inject(Router);
   readonly store=inject(CategoryStore);
  
-  toCategory(categoria:number) {
-
+  toCategory(categoria:string) {
+    //this.store.setCategorySelected(categoria);
     this.router.navigateByUrl(`store/productos/${categoria}`);
 
   }

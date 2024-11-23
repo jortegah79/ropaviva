@@ -1,15 +1,15 @@
-<!--
+
 <div class="card rounded-3" (click)="toProduct(producto()!.id)" style="cursor: pointer;">
-     <div [ngStyle]="{'background-image': 'url(`${ producto()!.images[0] |imagecleaner } `)'}"  class=" rounded-3 product mb-3 card-image-top" ></div>
-       <h5 class="card-title fs-4 fw-bold text-indigo">{{producto()!.title}}</h5> 
-
-
-    <div class="rounded-3 product card-image-top">
-        <img [src]="producto().images[1] | imagecleaner" />
-    
-    </div>
+     <!-- <div [ngStyle]="{'background-image': 'url(`${ } `)'}"  class=" rounded-3 product mb-3 card-image-top" ></div> -->
+     
+     
+        <div class="rounded-3 product card-image-top">
+            <img [src]="producto().images[0] | imagecleaner" />
+            
+        </div>
+        <h5 class="card-title fs-4 fw-bold text-indigo">{{producto()!.name}}</h5> 
     <div class="card-body bg-secondary text-white">
-        <h5 claass="card-title">{{producto()!.title}}</h5>
+        <h5 claass="card-title">{{producto()!.description}}</h5>
         <p class="card-text fs-3 text-end bg-teal text-light p-3">Ver el producto {{producto()!.price}} €</p>
     </div>
-</div>-->
+</div>   

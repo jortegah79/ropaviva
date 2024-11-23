@@ -7,8 +7,8 @@ import { Pipe, PipeTransform } from '@angular/core';
 export class ImagePipe implements PipeTransform {
 
   transform(url:string|undefined): string {
-     if(!url)return "";
-     return url.replaceAll('[',"").replaceAll(']',"");
+     
+     return !url?"":url;
   }
 
 }

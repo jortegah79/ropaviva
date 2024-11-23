@@ -33,9 +33,9 @@ export const routes: Routes = [
         ]
     },
     {
-        path:"dashboard",
-        component:TemplateComponent2,
-        children:[
+        path: "dashboard",
+        component: TemplateComponent2,
+        children: [
             {
                 path: "categorias",
                 loadComponent: () => import("./dashboard/pages/categorias/categorias.component")
@@ -60,7 +60,8 @@ export const routes: Routes = [
                 path: "",
                 pathMatch: "full",
                 redirectTo: "categorias"
-            }
+            },
+           
         ]
     },
     {
@@ -70,6 +71,7 @@ export const routes: Routes = [
     },
     {
         path: "**",
-        loadComponent: () => import('./shared/pages/errorpage/errorpage.component').then(p => p.ErrorpageComponent)
+        redirectTo:"store"
+        //loadComponent: () => import('./shared/pages/errorpage/errorpage.component').then(p => p.ErrorpageComponent)
     }
 ];

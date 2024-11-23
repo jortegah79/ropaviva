@@ -1,6 +1,7 @@
 import { Component,  effect,  input } from '@angular/core';
 import { ImagePipe } from "../../pipes/image.pipe";
 import { CommonModule } from '@angular/common';
+import { Product } from '../../../models/product';
 
 @Component({
   selector: 'component-producto',
@@ -14,16 +15,16 @@ toProduct(arg0: any) {
 throw new Error('Method not implemented.');
 }
 
-//public producto=input.required<Product>();
+public producto=input.required<Product>();
 
 
 
 constructor() {
   // Definimos un effect con tipo de retorno void
-  // effect((): void => {
-  //    console.log( this.product.);
+  effect((): void => {
+     console.log( this.producto);
      
-  // });
+  });
 }
 
 }

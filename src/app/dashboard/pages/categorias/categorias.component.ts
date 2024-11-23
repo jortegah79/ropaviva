@@ -16,22 +16,25 @@ import { IonFab } from "@ionic/angular/standalone";
   styleUrl: './categorias.component.scss'
 })
 export default class CategoriasComponent implements OnInit {
-
+  
   readonly store = inject(CategoryStore);
   private formBuilder = inject(FormBuilder);
   private categoriesService = inject(CategoriesService);
   public categoryEditable?: Category;
 
   public categoryForm = this.formBuilder.group({
-    name: new FormControl('', [Validators.required, Validators.min(3)]),
-    imagenUrl: new FormControl('', [Validators.required, Validators.min(7)])
+    name:      ['', [Validators.required, Validators.minLength(3)]],
+    imagenUrl: ['', [Validators.required, Validators.minLength(7)]],
   });
-
+  
   ngOnInit(): void {
     this.store.loadCategories();
     this.store.resetPagePaginator();
   }
-
+  
+  resetFormulario() {
+   this.categoryEditable=undefined;
+  }
   saveCategory(button: HTMLButtonElement) {
     if (this.categoryForm.valid) {
       const category: Category = {

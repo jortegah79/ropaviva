@@ -1,20 +1,30 @@
 <div class="container">
-  <!-- @if(categoria!==undefined){ -->
-  <!-- <h1 class="text-danger display-3 "><img class="img-thumbnail me-3 border-3 border-teal" -->
-      <!-- style="border-radius:100%;width:100px;" [srcset]="categoria()?.image">{{categoria()?.name}}</h1> -->
 
-  <!-- }@else { -->
+  @if(categoria!==undefined){
+  <h1 class="text-danger display-3 ">
+    <img class="img-thumbnail me-3 border-3 border-teal" style="border-radius:100%;width:100px;"
+      [srcset]="categoria()?.imagenUrl">{{categoria()?.name}}
+  </h1>
+
+  }@else {
+
   <p>espere...</p>
-  <!-- } -->
+
+  }
 
 
   <div class="row">
-    <!-- @for (producto of productos(); track $index) { -->
+    
+     @for (producto of productos(); track $index) {
+
     <div class="col-12 col-md-3 col-lg-4 gap-1 mb-4">
-      <!-- <component-producto [producto]="producto"/> -->
+
+       <component-producto [producto]="producto"/>  
     </div>
-    <!-- }@empty { -->
+
+    }@empty {
     <h3>No hay nada</h3>
-    <!-- } -->
+
+    } 
 
   </div>
